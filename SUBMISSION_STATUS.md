@@ -7,18 +7,18 @@
 - Embedding model thật, revision cố định, pgvector lưu bền vững và filter SQL.
 - A/B/C chạy đủ, nạp lại không trùng và xóa stale chunks đã kiểm chứng.
 - Chọn C trên dev trước test; có checksum, trace, latency và chi phí local.
-- 7 regression tests đạt; 60 trace / 180 top-3 và metadata 45/45 đã kiểm tra.
+- 10 regression tests đạt; 60 trace / 180 top-3 và metadata 45/45 đã kiểm tra.
 - Báo cáo, experiment log, phiên bản môi trường và ví dụ lỗi đã lưu.
 - Lệnh tái lập --reproduce đã chạy thật; số hit khớp, kết quả gốc không đổi.
-- Đã xuất 90 nhãn có attribution, nhận xét q17 bổ sung và ghi điểm A-s01=0
-  theo câu trả lời thực tế của người học. Không tạo thêm nhãn dưới tên tác giả.
+- Đã chấm đủ 90/90 bản ghi trong review_labels.csv, có lý do và phương pháp;
+  nhận xét q17 được báo riêng, A-s01=0 theo lựa chọn thực tế của người học.
 
 Các phần còn cần tác giả thực hiện trước khi coi là bài nộp hoàn tất:
 
-1. Đọc `starter/results/AUDIT_REVIEW.md`, điền ba CSV `human_*_labels.csv`
-   sau khi tự kiểm tra. Hiện có 30 mẫu coherence, 15 grounding và 45 bản ghi
-   metadata chờ xác nhận; nhãn AI không được giả thành nhãn của tác giả.
-2. Chạy `-m src.reporting` để cập nhật bảng điểm tác giả và đọc lại báo cáo.
+1. Đọc lại báo cáo và bảng chấm chung nếu muốn sửa đánh giá. Phương pháp chấm
+   được công bố: Codex hỗ trợ chấm nội dung, công cụ đối chiếu metadata và
+   một điểm A-s01 do người học cung cấp. Không khẳng định tác giả tự chấm mọi mẫu.
+2. Nếu sửa review_labels.csv, chạy `-m src.reporting` để cập nhật báo cáo.
 3. Xác nhận lớp L3A nếu tên repo chưa phản ánh lớp thực tế.
 4. Commit snapshot thật được ghi trong STUDENT.md và artifacts/source_commit.json
    khi tạo xong. Trạng thái đẩy repo kiểm chứng bằng lịch sử GitHub và

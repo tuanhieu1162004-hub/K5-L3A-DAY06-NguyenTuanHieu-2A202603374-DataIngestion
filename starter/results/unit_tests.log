@@ -1,3 +1,6 @@
+test_duplicate_or_missing_case_cannot_appear_complete (test_grading.GradingTests.test_duplicate_or_missing_case_cannot_appear_complete) ... ok
+test_missing_reason_or_wrong_strategy_is_rejected (test_grading.GradingTests.test_missing_reason_or_wrong_strategy_is_rejected) ... ok
+test_zero_rating_is_retained_with_its_actual_origin (test_grading.GradingTests.test_zero_rating_is_retained_with_its_actual_origin) ... ok
 test_invalid_overlap_cannot_hang (test_pipeline.ChunkingTests.test_invalid_overlap_cannot_hang) ... ok
 test_oversized_unbroken_paragraph_and_unicode (test_pipeline.ChunkingTests.test_oversized_unbroken_paragraph_and_unicode) ... ok
 test_real_corpus_coverage_and_source_offsets (test_pipeline.ChunkingTests.test_real_corpus_coverage_and_source_offsets) ... ok
@@ -7,6 +10,6 @@ test_full_evidence_requires_source_page_and_single_chunk (test_pipeline.Evidence
 test_metrics_keep_split_denominators (test_pipeline.EvidenceTests.test_metrics_keep_split_denominators) ... ok
 
 ----------------------------------------------------------------------
-Ran 7 tests in 0.034s
+Ran 10 tests in 0.040s
 
 OK

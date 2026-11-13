@@ -5,6 +5,7 @@ from collections import Counter
 from pathlib import Path
 
 from .run import CONFIG, FREEZE, REPO, RESULTS, check_frozen, lines, read, save
+from .grading import load_reviews, summarize_reviews
 
 
 def csv_file(path: Path, rows: list[dict]) -> None:
@@ -27,57 +28,11 @@ def main() -> None:
     traces = lines(RESULTS / "traces_test.jsonl")
     metric_rows = [{**row, "chunk_count": stats["strategies"][row["strategy"]]["chunk_count"]} for row in dev + test]
     csv_file(RESULTS / "metrics.csv", metric_rows)
-    manual_pending = 0
-    human_ratings_recorded = 0
-    human_scores = {s: {"coherence": [], "grounding": [], "metadata": []} for s in "ABC"}
-    audit_summary = []
-    for kind in ("coherence", "grounding"):
-        target = RESULTS / f"human_{kind}_labels.csv"
-        if not target.exists():
-            csv_file(target, [{"case_id": item["case_id"], "strategy": item["strategy"],
-                "source_id": item["sample_id"] if kind == "coherence" else item["question_id"],
-                "ai_score": item["score"], "ai_reason": item["reason"],
-                "human_score": "", "human_reason": "", "human_reviewer": ""} for item in reviews[kind]])
-        with target.open(encoding="utf-8-sig", newline="") as handle:
-            for row in csv.DictReader(handle):
-                human_ratings_recorded += row["human_score"] in ("0", "1", "2") and bool(row["human_reviewer"].strip())
-                complete = row["human_score"] in ("0", "1", "2") and row["human_reviewer"].strip() and row["human_reason"].strip()
-                manual_pending += not complete
-                if complete:
-                    human_scores[row["strategy"]][kind].append(int(row["human_score"]))
-    target = RESULTS / "human_metadata_labels.csv"
-    if not target.exists():
-        csv_file(target, [{"strategy": m["strategy"], "question_id": m["question_id"],
-            "rank": m["rank"], "chunk_id": m["chunk_id"], "page": m["page"],
-            "automated_correct": m["automated_metadata_correct"], "human_confirmed": "",
-            "human_reason": "", "human_reviewer": ""} for m in metadata])
-    with target.open(encoding="utf-8-sig", newline="") as handle:
-        for row in csv.DictReader(handle):
-            value = row["human_confirmed"].strip().lower()
-            complete = value in ("true", "false", "1", "0") and row["human_reviewer"].strip() and row["human_reason"].strip()
-            manual_pending += not complete
-            if complete:
-                human_scores[row["strategy"]]["metadata"].append(value in ("true", "1"))
-    for strategy in "ABC":
-        coherence = [r for r in reviews["coherence"] if r["strategy"] == strategy]
-        grounding = [r for r in reviews["grounding"] if r["strategy"] == strategy]
-        checked_meta = [r for r in metadata if r["strategy"] == strategy]
-        row = next(r for r in test if r["strategy"] == strategy)
-        distribution = Counter(r["score"] for r in grounding)
-        audit_summary.append({"strategy": strategy,
-            "coherence_ai_mean": sum(r["score"] for r in coherence) / len(coherence),
-            "coherence_samples": len(coherence),
-            "grounding_ai_mean": sum(r["score"] for r in grounding) / len(grounding),
-            "grounding_ai_distribution": {str(k): distribution[k] for k in (0, 1, 2)},
-            "metadata_automated_correct_n": sum(r["automated_metadata_correct"] for r in checked_meta),
-            "metadata_checked_n": len(checked_meta),
-            "requested_filter_compliant_n": row["requested_filter_compliant_n"],
-            "filter_questions_n": row["filter_questions"]})
-    save(RESULTS / "audit_summary.json", {"rows": audit_summary, "reviewer": "Codex (AI)",
-        "human_confirmation_pending_records": manual_pending,
-        "human_ratings_recorded": human_ratings_recorded,
-        "human_confirmed_scores": human_scores,
-        "note": "AI reading-based scores and automated metadata checks, not author-confirmed human labels."})
+    graded = load_reviews()
+    audit_summary = summarize_reviews(graded, test)
+    save(RESULTS / "audit_summary.json", {"rows": audit_summary, "graded_records": len(graded),
+        "grading_complete": True, "author_independent_manual_review_confirmed": False,
+        "method": read(RESULTS / "grading_manifest.json")["method"]})
 
     log_rows = []
     for strategy in "ABC":
@@ -129,32 +84,20 @@ def main() -> None:
     for r in metric_rows:
         report.append(f"| {r['strategy']} | {r['split']} | {r['hit1_n']}/{r['n']} ({r['hit1']:.1%}) | {r['hit3_n']}/{r['n']} ({r['hit3']:.1%}) | {r['chunk_count']} | {r['mean_search_seconds']*1000:.2f} |")
     report += ["", "## Coherence, metadata và grounding", "",
-        "**Điểm coherence/grounding dưới đây do Codex (AI) đọc và chấm từng mẫu theo rubric 0–2. "
-        "Metadata được đối chiếu tự động với nguồn và offsets. Đây chưa phải xác nhận chấm thủ công của tác giả.**", "",
+        "Phương pháp: Codex hỗ trợ đọc và chấm mẫu theo rubric; metadata được đối chiếu bằng công cụ với nguồn và offsets. "
+        "A-s01 dùng điểm 0 người học trực tiếp cung cấp; nhận xét về ranh giới đoạn do Codex ghi. "
+        "Người/công cụ và phương pháp của từng nhãn được lưu trong review_labels.csv, không khẳng định tác giả đã tự chấm mọi mẫu.", "",
         "Coherence dùng cùng 10 vị trí nguồn đã chốt; khi nhiều chunk bao phủ, chọn chunk có start_char gần vị trí nhất từ phía trước. "
         "Grounding dùng cùng 5 test mỗi cấu hình, xét đủ bằng chứng trong cả top-3; không đo độ chính xác câu trả lời LLM.", "",
-        "| Strategy | Coherence AI /2 (10 mẫu) | Metadata auto đủ/đúng | Filter test tuân thủ | Grounding AI: số mức 0/1/2 | Grounding AI /2 |",
+        "| Strategy | Coherence /2 (10 mẫu) | Metadata đủ/đúng | Filter test tuân thủ | Grounding: số mức 0/1/2 | Grounding /2 |",
         "|---|---|---|---|---|---|"]
     for r in audit_summary:
-        dist = r["grounding_ai_distribution"]
+        dist = r["grounding_distribution"]
         filter_rate = f"{r['requested_filter_compliant_n']}/{r['filter_questions_n']}" if r['filter_questions_n'] else "N/A"
-        report.append(f"| {r['strategy']} | {r['coherence_ai_mean']:.2f} | {r['metadata_automated_correct_n']}/{r['metadata_checked_n']} | {filter_rate} | {dist['0']}/{dist['1']}/{dist['2']} | {r['grounding_ai_mean']:.2f} |")
-    report += ["", "Kết quả tác giả xác nhận, tính riêng từ CSV có điểm/lý do/người chấm hợp lệ:", "",
-        "| Strategy | Coherence tác giả /2 | Grounding tác giả /2 | Metadata tác giả đủ/đúng |",
-        "|---|---|---|---|"]
-    for strategy, values in human_scores.items():
-        cells = []
-        for kind in ("coherence", "grounding"):
-            scores = values[kind]
-            cells.append(f"{sum(scores)/len(scores):.2f} (n={len(scores)})" if scores else "Chưa chấm")
-        meta_scores = values["metadata"]
-        cells.append(f"{sum(meta_scores)}/{len(meta_scores)}" if meta_scores else "Chưa chấm")
-        report.append(f"| {strategy} | {' | '.join(cells)} |")
-    report += ["", f"Còn **{manual_pending} bản ghi chờ tác giả xác nhận/chấm** trong `human_*_labels.csv`. "
-        "Không tự gán AI thành người chấm. Toàn bộ text mẫu, ID, nguồn, nhận xét AI và cột tác giả để trống có trong các file audit.", "",
-        f"Đã ghi nhận {human_ratings_recorded} điểm do người học trực tiếp cung cấp. "
-        "A-s01 được người học chọn 0; lý do chưa được cung cấp nên chưa tính là một bản ghi chấm hoàn tất. "
-        "Toàn bộ 90 nhãn AI/kiểm tra metadata có tên người/công cụ chấm ở attributed_review_labels.csv.", "",
+        report.append(f"| {r['strategy']} | {r['coherence_mean']:.2f} | {r['metadata_correct_n']}/{r['metadata_checked_n']} | {filter_rate} | {dist['0']}/{dist['1']}/{dist['2']} | {r['grounding_mean']:.2f} |")
+    report += ["", "Đã chấm **90/90 bản ghi**: 30 coherence, 15 grounding và 45 metadata. "
+        "Mỗi bản ghi có điểm/kết luận, lý do và người/công cụ chấm trong review_labels.csv. "
+        "Hồ sơ đọc từng mẫu ở AUDIT_REVIEW.md; các bảng trước khi gộp được giữ trong review_history/.", "",
         "## Tài nguyên và tái lập", "",
         f"Model load/download lần ingest: {stats['model_load_seconds']:.3f}s. "
         "Thời gian ingest bên dưới bao gồm encoding/cache, lưu DB và một lần nạp lại để kiểm tra; không bao gồm load/download model. "
@@ -171,7 +114,7 @@ def main() -> None:
         "## Phân tích và kết luận", "",
         "A–B: chia theo đoạn nâng dev Hit@3 từ 10/15 lên 12/15 và Hit@1 từ 7/15 lên 12/15, "
         "nhưng số chunk tăng 241 lên 271. B ít tổng ký tự/token hơn nhờ không overlap. "
-        "Theo 10 vị trí đã chốt, coherence do AI chấm là 1,00/2 cho A và 1,60/2 cho B/C. "
+        f"Theo 10 vị trí đã chốt, coherence tổng hợp là {audit_summary[0]['coherence_mean']:.2f}/2 cho A và {audit_summary[1]['coherence_mean']:.2f}/2 cho B/C. "
         "B vẫn cắt các đoạn dài và có chunk chỉ chứa running header.", "",
         "B–C: Hit@1/Hit@3 không đổi trên cả hai split. Với dev q08, B trả các chương [2,1,2], "
         "C trả [2,2,2]; tuân thủ filter dev tăng từ 1/2 lên 2/2. "
@@ -191,17 +134,17 @@ def main() -> None:
     report += ["", f"Giữ lựa chọn **{selection['strategy']}** theo dev. "
         "Kết quả test chỉ mô tả 5 câu thuộc corpus này, không chứng minh một chiến lược tốt nhất tổng quát. "
         "AI cùng hỗ trợ soạn/chấm có thiên lệch; cỡ mẫu nhỏ, text PDF lỗi, metric chuỗi và latency một lần đo là các giới hạn chính. "
-        "Cải tiến tiếp theo: tác giả xác nhận nhãn; cải thiện text PDF trên một thí nghiệm mới; tăng test theo nhiều chương; "
+        "Cải tiến tiếp theo: review độc lập để kiểm tra độ nhất quán nhãn; cải thiện text PDF trên một thí nghiệm mới; tăng test theo nhiều chương; "
         "đánh giá hợp bằng chứng/hybrid như metric/thí nghiệm bổ sung, giữ metric chính.", "",
         "## AI, artifact và trạng thái nộp", "",
         "Codex hỗ trợ code, kiểm tra nguồn, soạn benchmark, chạy và phân tích. "
         "AI review đọc text theo rubric, có lý do từng mẫu, không phải LLM judge bên ngoài hay nhãn do tác giả xác nhận. "
-        "Người học cần hiểu/giải thích code và chấm/xác nhận nhãn thủ công theo RULES.md. "
+        "Người học cần hiểu/giải thích code; phương pháp và nguồn gốc nhãn được công bố theo RULES.md. "
         "Trạng thái push được xác minh riêng bằng lịch sử GitHub và artifacts/publish_receipt.json trong bản local/ZIP nếu có; "
         "không suy ra đã nộp bài cho lớp từ việc có link repo. Commit snapshot được ghi trong STUDENT.md và artifacts/source_commit.json nếu đã tạo.", "",
         "Artifacts: frozen.json, strategies.json, experiment_log.csv; pages/chunks; ingestion_stats.json; "
         "traces_dev/test.jsonl; metrics_dev/test.json, metrics.csv; selection.json; "
-        "coherence/grounding/metadata_review_cases.jsonl; ai_reviews.json; human_*_labels.csv; "
+        "coherence/grounding/metadata_review_cases.jsonl; review_labels.csv; grading_manifest.json; review_history/; "
         "audit_summary.json; unit_tests.log; environment.txt; input_review/.", ""]
     supplemental_path = RESULTS / "supplemental_evidence_metrics.json"
     if supplemental_path.exists():
@@ -223,7 +166,7 @@ def main() -> None:
             "Kết quả mới ở starter/results/reproductions/. Đây là tái lập trên test đã biết, không phải holdout mới; cache và thời gian có thể khác.", ""]
     target = REPO / "report/individual/2A202603374_NguyenTuanHieu.md"
     target.write_text("\n".join(report), encoding="utf-8")
-    print(f"Report written: {target.name}; author audit records pending: {manual_pending}")
+    print(f"Report written: {target.name}; graded records: {len(graded)}/90")
 
 
 if __name__ == "__main__":

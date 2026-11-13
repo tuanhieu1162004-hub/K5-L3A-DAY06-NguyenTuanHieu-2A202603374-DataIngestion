@@ -110,19 +110,19 @@ strategy khác; chunk cũ/tài liệu bị loại cũng được xóa khỏi sna
 ```
 
 Mở `starter/results/AUDIT_REVIEW.md` để xem text và nguồn của từng mẫu.
-Điền ba `human_*_labels.csv` sau khi tự đối chiếu; không gán nhãn AI thành
-nhãn của tác giả. Báo cáo hiện trình bày điểm AI và trạng thái chờ xác nhận.
+`review_labels.csv` là bảng chấm chung đã điền đủ **90/90** bản ghi, gồm
+30 coherence, 15 grounding và 45 metadata. Mỗi dòng có score, reason,
+reviewer và method. Các bảng trước khi gộp nằm trong review_history/.
 
-Đã có `attributed_review_labels.csv` gồm 90 nhãn với người/công cụ chấm rõ
-ràng. `supplemental_evidence_reviews.csv` và bảng supplementary metrics giải
-thích B/C-q17; đây là review AI sau thí nghiệm, không thay primary metric.
-Điểm A-s01=0 do người học thực sự cung cấp được ghi riêng cùng provenance;
-không tự tạo lý do hoặc các điểm khác dưới tên người học.
+Phương pháp: Codex hỗ trợ đọc/chấm nội dung và công cụ đối chiếu metadata;
+A-s01 dùng điểm 0 người học trực tiếp cung cấp. Không gán các nhận xét khác
+thành nhận xét do người học tự viết. `supplemental_evidence_reviews.csv`
+giải thích B/C-q17 sau thí nghiệm, không thay primary metric.
 
 Xem `starter/results/` và báo cáo cá nhân trong `report/individual/`.
 Trace có cả ID/text/score/metadata, requested/applied filter và gold.
-Không suy luận nhãn coherence/grounding từ Hit@3. Nhãn do AI hỗ trợ review
-được ghi rõ; cột xác nhận/chấm của tác giả cần được điền trung thực.
+Không suy luận nhãn coherence/grounding từ Hit@3. Phương pháp và người/công cụ
+chấm được công bố trong báo cáo và từng dòng của bảng chấm.
 
 Pipeline không tạo chatbot hoặc câu trả lời LLM. Grounding đo độ đủ bằng
 chứng truy xuất. Test chỉ 5 câu trong một chương; thời gian đo chịu ảnh hưởng

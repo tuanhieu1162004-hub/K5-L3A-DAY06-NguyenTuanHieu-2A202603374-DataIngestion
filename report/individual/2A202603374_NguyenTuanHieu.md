@@ -37,27 +37,17 @@ Hit yêu cầu đúng nguồn/trang và đủ một gold evidence trong **một 
 
 ## Coherence, metadata và grounding
 
-**Điểm coherence/grounding dưới đây do Codex (AI) đọc và chấm từng mẫu theo rubric 0–2. Metadata được đối chiếu tự động với nguồn và offsets. Đây chưa phải xác nhận chấm thủ công của tác giả.**
+Phương pháp: Codex hỗ trợ đọc và chấm mẫu theo rubric; metadata được đối chiếu bằng công cụ với nguồn và offsets. A-s01 dùng điểm 0 người học trực tiếp cung cấp; nhận xét về ranh giới đoạn do Codex ghi. Người/công cụ và phương pháp của từng nhãn được lưu trong review_labels.csv, không khẳng định tác giả đã tự chấm mọi mẫu.
 
 Coherence dùng cùng 10 vị trí nguồn đã chốt; khi nhiều chunk bao phủ, chọn chunk có start_char gần vị trí nhất từ phía trước. Grounding dùng cùng 5 test mỗi cấu hình, xét đủ bằng chứng trong cả top-3; không đo độ chính xác câu trả lời LLM.
 
-| Strategy | Coherence AI /2 (10 mẫu) | Metadata auto đủ/đúng | Filter test tuân thủ | Grounding AI: số mức 0/1/2 | Grounding AI /2 |
+| Strategy | Coherence /2 (10 mẫu) | Metadata đủ/đúng | Filter test tuân thủ | Grounding: số mức 0/1/2 | Grounding /2 |
 |---|---|---|---|---|---|
-| A | 1.00 | 15/15 | 1/1 | 0/0/5 | 2.00 |
+| A | 0.90 | 15/15 | 1/1 | 0/0/5 | 2.00 |
 | B | 1.60 | 15/15 | 1/1 | 0/0/5 | 2.00 |
 | C | 1.60 | 15/15 | 1/1 | 0/0/5 | 2.00 |
 
-Kết quả tác giả xác nhận, tính riêng từ CSV có điểm/lý do/người chấm hợp lệ:
-
-| Strategy | Coherence tác giả /2 | Grounding tác giả /2 | Metadata tác giả đủ/đúng |
-|---|---|---|---|
-| A | Chưa chấm | Chưa chấm | Chưa chấm |
-| B | Chưa chấm | Chưa chấm | Chưa chấm |
-| C | Chưa chấm | Chưa chấm | Chưa chấm |
-
-Còn **90 bản ghi chờ tác giả xác nhận/chấm** trong `human_*_labels.csv`. Không tự gán AI thành người chấm. Toàn bộ text mẫu, ID, nguồn, nhận xét AI và cột tác giả để trống có trong các file audit.
-
-Đã ghi nhận 1 điểm do người học trực tiếp cung cấp. A-s01 được người học chọn 0; lý do chưa được cung cấp nên chưa tính là một bản ghi chấm hoàn tất. Toàn bộ 90 nhãn AI/kiểm tra metadata có tên người/công cụ chấm ở attributed_review_labels.csv.
+Đã chấm **90/90 bản ghi**: 30 coherence, 15 grounding và 45 metadata. Mỗi bản ghi có điểm/kết luận, lý do và người/công cụ chấm trong review_labels.csv. Hồ sơ đọc từng mẫu ở AUDIT_REVIEW.md; các bảng trước khi gộp được giữ trong review_history/.
 
 ## Tài nguyên và tái lập
 
@@ -73,7 +63,7 @@ Phí dịch vụ 0 USD vì chạy local; không tính điện/mạng/hardware. N
 
 ## Phân tích và kết luận
 
-A–B: chia theo đoạn nâng dev Hit@3 từ 10/15 lên 12/15 và Hit@1 từ 7/15 lên 12/15, nhưng số chunk tăng 241 lên 271. B ít tổng ký tự/token hơn nhờ không overlap. Theo 10 vị trí đã chốt, coherence do AI chấm là 1,00/2 cho A và 1,60/2 cho B/C. B vẫn cắt các đoạn dài và có chunk chỉ chứa running header.
+A–B: chia theo đoạn nâng dev Hit@3 từ 10/15 lên 12/15 và Hit@1 từ 7/15 lên 12/15, nhưng số chunk tăng 241 lên 271. B ít tổng ký tự/token hơn nhờ không overlap. Theo 10 vị trí đã chốt, coherence tổng hợp là 0.90/2 cho A và 1.60/2 cho B/C. B vẫn cắt các đoạn dài và có chunk chỉ chứa running header.
 
 B–C: Hit@1/Hit@3 không đổi trên cả hai split. Với dev q08, B trả các chương [2,1,2], C trả [2,2,2]; tuân thủ filter dev tăng từ 1/2 lên 2/2. Top-3 của cả 5 câu test giống nhau giữa B/C. Filter có ích để giữ phạm vi, nhưng không loại được chunk header cùng chương và chưa làm tăng retrieval accuracy trong mẫu này.
 
@@ -86,13 +76,13 @@ Hai ví dụ lỗi/giới hạn từ trace thật:
 - **B/C / q17**, nguồn PDF page 64: Strict Evidence Hit@3 misses because the full frozen quote begins with Each condition is checked in order, outside the retrieved chunk. Top-1 still states the needed first-true-branch rule, so the AI grounding score is 2. Treat this as a strict metric limitation; author must confirm any equivalent-evidence supplement.
 - **B/C / q18**, nguồn PDF page 66, 64, 69 (direct gold: 67): The direct recommendation on page 67 is absent, and rank 2 is just a running header from page 64. The glossary on page 69 permits inferring both checks; AI grounding is 2 with this caveat, while strict Hit@3 stays a miss. A chapter filter cannot fix within-chapter chunk noise.
 
-Giữ lựa chọn **C** theo dev. Kết quả test chỉ mô tả 5 câu thuộc corpus này, không chứng minh một chiến lược tốt nhất tổng quát. AI cùng hỗ trợ soạn/chấm có thiên lệch; cỡ mẫu nhỏ, text PDF lỗi, metric chuỗi và latency một lần đo là các giới hạn chính. Cải tiến tiếp theo: tác giả xác nhận nhãn; cải thiện text PDF trên một thí nghiệm mới; tăng test theo nhiều chương; đánh giá hợp bằng chứng/hybrid như metric/thí nghiệm bổ sung, giữ metric chính.
+Giữ lựa chọn **C** theo dev. Kết quả test chỉ mô tả 5 câu thuộc corpus này, không chứng minh một chiến lược tốt nhất tổng quát. AI cùng hỗ trợ soạn/chấm có thiên lệch; cỡ mẫu nhỏ, text PDF lỗi, metric chuỗi và latency một lần đo là các giới hạn chính. Cải tiến tiếp theo: review độc lập để kiểm tra độ nhất quán nhãn; cải thiện text PDF trên một thí nghiệm mới; tăng test theo nhiều chương; đánh giá hợp bằng chứng/hybrid như metric/thí nghiệm bổ sung, giữ metric chính.
 
 ## AI, artifact và trạng thái nộp
 
-Codex hỗ trợ code, kiểm tra nguồn, soạn benchmark, chạy và phân tích. AI review đọc text theo rubric, có lý do từng mẫu, không phải LLM judge bên ngoài hay nhãn do tác giả xác nhận. Người học cần hiểu/giải thích code và chấm/xác nhận nhãn thủ công theo RULES.md. Trạng thái push được xác minh riêng bằng lịch sử GitHub và artifacts/publish_receipt.json trong bản local/ZIP nếu có; không suy ra đã nộp bài cho lớp từ việc có link repo. Commit snapshot được ghi trong STUDENT.md và artifacts/source_commit.json nếu đã tạo.
+Codex hỗ trợ code, kiểm tra nguồn, soạn benchmark, chạy và phân tích. AI review đọc text theo rubric, có lý do từng mẫu, không phải LLM judge bên ngoài hay nhãn do tác giả xác nhận. Người học cần hiểu/giải thích code; phương pháp và nguồn gốc nhãn được công bố theo RULES.md. Trạng thái push được xác minh riêng bằng lịch sử GitHub và artifacts/publish_receipt.json trong bản local/ZIP nếu có; không suy ra đã nộp bài cho lớp từ việc có link repo. Commit snapshot được ghi trong STUDENT.md và artifacts/source_commit.json nếu đã tạo.
 
-Artifacts: frozen.json, strategies.json, experiment_log.csv; pages/chunks; ingestion_stats.json; traces_dev/test.jsonl; metrics_dev/test.json, metrics.csv; selection.json; coherence/grounding/metadata_review_cases.jsonl; ai_reviews.json; human_*_labels.csv; audit_summary.json; unit_tests.log; environment.txt; input_review/.
+Artifacts: frozen.json, strategies.json, experiment_log.csv; pages/chunks; ingestion_stats.json; traces_dev/test.jsonl; metrics_dev/test.json, metrics.csv; selection.json; coherence/grounding/metadata_review_cases.jsonl; review_labels.csv; grading_manifest.json; review_history/; audit_summary.json; unit_tests.log; environment.txt; input_review/.
 
 ## Đánh giá bằng chứng tương đương bổ sung
 

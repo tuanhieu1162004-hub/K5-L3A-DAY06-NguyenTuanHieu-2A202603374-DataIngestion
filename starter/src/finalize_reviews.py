@@ -27,10 +27,12 @@ def main() -> None:
             "reason": "Source/page/chapter/printed_page and exact text offsets checked against frozen source pages.",
             "reviewer": "Source verification script", "reviewer_type": "automated_source_check", "human_confirmed": False})
     assert len(rows) == 90
-    write_csv(RESULTS / "attributed_review_labels.csv", rows)
+    history = RESULTS / "review_history"
+    target = history if history.exists() else RESULTS
+    write_csv(target / "attributed_review_labels.csv", rows)
     # Preserve the user's explicit score. A rationale was not supplied, so do not
     # fabricate it or count this as a completed human rubric review.
-    human_path = RESULTS / "human_coherence_labels.csv"
+    human_path = target / "human_coherence_labels.csv"
     with human_path.open(encoding="utf-8-sig", newline="") as handle:
         human = list(csv.DictReader(handle))
     for row in human:

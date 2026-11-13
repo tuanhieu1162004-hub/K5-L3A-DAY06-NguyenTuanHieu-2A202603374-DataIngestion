@@ -4,8 +4,8 @@ Trang thai: **da frozen truoc retrieval; da chay dev -> select -> test cho A/B/C
 
 Checksum: `benchmark/frozen.json`. Quyet dinh tren dev: `starter/results/selection.json`.
 Ket qua: `starter/results/metrics_dev.json`, `metrics_test.json` va trace JSONL.
-Nhom nhan AI va nhan tac gia duoc tach ro trong bao cao; tac gia chua xac nhan
-bang cham thu cong. Khong chinh lai test hoac tham so theo cac ket qua nay.
+Bang cham chung 90 mau: starter/results/review_labels.csv; phuong phap va
+nguon goc nhan duoc ghi trong bao cao. Khong chinh test/tham so theo ket qua.
 
 Nhat ky review va nguon goc nhan: `starter/results/input_review/REVIEW.md`.
 AI da doi chieu PDF/text va dap an; day khong phai cham thu cong coherence

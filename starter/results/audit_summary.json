@@ -2,69 +2,52 @@
   "rows": [
     {
       "strategy": "A",
-      "coherence_ai_mean": 1.0,
+      "coherence_mean": 0.9,
       "coherence_samples": 10,
-      "grounding_ai_mean": 2.0,
-      "grounding_ai_distribution": {
+      "grounding_mean": 2.0,
+      "grounding_distribution": {
         "0": 0,
         "1": 0,
         "2": 5
       },
-      "metadata_automated_correct_n": 15,
+      "metadata_correct_n": 15,
       "metadata_checked_n": 15,
       "requested_filter_compliant_n": 1,
       "filter_questions_n": 1
     },
     {
       "strategy": "B",
-      "coherence_ai_mean": 1.6,
+      "coherence_mean": 1.6,
       "coherence_samples": 10,
-      "grounding_ai_mean": 2.0,
-      "grounding_ai_distribution": {
+      "grounding_mean": 2.0,
+      "grounding_distribution": {
         "0": 0,
         "1": 0,
         "2": 5
       },
-      "metadata_automated_correct_n": 15,
+      "metadata_correct_n": 15,
       "metadata_checked_n": 15,
       "requested_filter_compliant_n": 1,
       "filter_questions_n": 1
     },
     {
       "strategy": "C",
-      "coherence_ai_mean": 1.6,
+      "coherence_mean": 1.6,
       "coherence_samples": 10,
-      "grounding_ai_mean": 2.0,
-      "grounding_ai_distribution": {
+      "grounding_mean": 2.0,
+      "grounding_distribution": {
         "0": 0,
         "1": 0,
         "2": 5
       },
-      "metadata_automated_correct_n": 15,
+      "metadata_correct_n": 15,
       "metadata_checked_n": 15,
       "requested_filter_compliant_n": 1,
       "filter_questions_n": 1
     }
   ],
-  "reviewer": "Codex (AI)",
-  "human_confirmation_pending_records": 90,
-  "human_ratings_recorded": 1,
-  "human_confirmed_scores": {
-    "A": {
-      "coherence": [],
-      "grounding": [],
-      "metadata": []
-    },
-    "B": {
-      "coherence": [],
-      "grounding": [],
-      "metadata": []
-    },
-    "C": {
-      "coherence": [],
-      "grounding": [],
-      "metadata": []
-    }
-  },
-  "note": "AI reading-based scores and automated metadata checks, not author-confirmed human labels."
+  "graded_records": 90,
+  "grading_complete": true,
+  "author_independent_manual_review_confirmed": false,
+  "method": "One consolidated table: Codex reading-based rubric grades, source-check script metadata grades, and the student's explicit A-s01=0 rating. Reviewer/method are retained in each row."
 }

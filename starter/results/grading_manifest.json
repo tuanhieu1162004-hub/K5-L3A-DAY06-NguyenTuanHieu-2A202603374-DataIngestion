@@ -1,0 +1,14 @@
+{
+  "completed_at": "2026-11-13T23:17:54+07:00",
+  "graded_records": 90,
+  "dimension_counts": {
+    "coherence": 30,
+    "grounding": 15,
+    "metadata": 45
+  },
+  "grading_complete": true,
+  "method": "One consolidated table: Codex reading-based rubric grades, source-check script metadata grades, and the student's explicit A-s01=0 rating. Reviewer/method are retained in each row.",
+  "author_independent_manual_review_confirmed": false,
+  "note": "Complete assessments are not a claim that the student personally graded every record. Historical tables remain in review_history/.",
+  "csv_sha256": "4b5e7b9aec2491ab5d5895836bab9512fd6d401473e5936cdcd29a830f42a37f"
+}

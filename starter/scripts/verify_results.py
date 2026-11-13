@@ -49,6 +49,10 @@ def main() -> None:
     ai = read(RESULTS / "ai_reviews.json")
     assert len(ai["coherence"]) == 30 and len(ai["grounding"]) == 15
     assert all(r["reviewer"] == "Codex (AI)" and r["score"] in (0, 1, 2) and not r["human_confirmed"] for kind in ("coherence", "grounding") for r in ai[kind])
+    from src.grading import load_reviews, validate_reviews
+    grades = load_reviews()
+    validate_reviews(grades)
+    assert len(grades) == 90
     stats = read(RESULTS / "ingestion_stats.json")
     backend = store(stats["dimensions"])
     try:
@@ -74,6 +78,7 @@ def main() -> None:
     save(RESULTS / "verification.json", {"verified_at": now(), "passed": True,
         "dev_traces": len(dev), "test_traces": len(test), "top3_records": 180,
         "metadata_source_checks": len(meta), "nonfiltered_B_C_controls": controls,
+        "graded_records_checked": len(grades), "grading_reviewer_method_recorded": True,
         "persistent_database_counts": persisted, "stale_removal_counts": stats["stale_removal_check_counts"],
         "exact_search_indexes": indexes, "selection_before_test_verified": True,
         "input_freeze_valid": True, "invalid_filter_rejection_verified": True,
