@@ -1,0 +1,62 @@
+[
+  {
+    "document_id": "think-python-2e",
+    "page": 23,
+    "position": 986,
+    "context": "y of the program”.\n\nOn one level, you will be learning to program, a useful skill by itself. On another level, you\nwill "
+  },
+  {
+    "document_id": "think-python-2e",
+    "page": 24,
+    "position": 1416,
+    "context": " recommend PythonAnywhere. I provide detailed\ninstructions for getting started athttp://tinyurl.com/thinkpython2e.\n\nTher"
+  },
+  {
+    "document_id": "think-python-2e",
+    "page": 25,
+    "position": 954,
+    "context": "int'Hello,  World!'\nThis distinction will make more sense soon, but that’s enough to get started.\n\n1.4    Arithmetic ope"
+  },
+  {
+    "document_id": "think-python-2e",
+    "page": 26,
+    "position": 1053,
+    "context": "lass'str'>\n>>>  type('42.0')\n<class'str'>\nThey’re strings.\n\nWhen you type a large integer, you might be tempted to use c"
+  },
+  {
+    "document_id": "think-python-2e",
+    "page": 27,
+    "position": 1547,
+    "context": "are some differences:\n\nambiguity:Natural languages are full of ambiguity, which people deal with by using con-\n       te"
+  },
+  {
+    "document_id": "think-python-2e",
+    "page": 28,
+    "position": 1384,
+    "context": "ctions might help you deal with them.  One approach is to think of\nthe computer as an employee with certain strengths, l"
+  },
+  {
+    "document_id": "think-python-2e",
+    "page": 29,
+    "position": 1210,
+    "context": "tic structure of a program, analogous to a\n       word in a natural language.\n\nsyntax:The rules that govern the structur"
+  },
+  {
+    "document_id": "think-python-2e",
+    "page": 30,
+    "position": 369,
+    "context": "tor between them?\nExercise 1.2.Start the Python interpreter and use it as a calculator.\n\n    1.  How many seconds are th"
+  },
+  {
+    "document_id": "think-python-2e",
+    "page": 31,
+    "position": 551,
+    "context": "\nmessage; the second gives the integer17ton; the third assigns the (approximate) value of\nπtopi.\nA common way to represe"
+  },
+  {
+    "document_id": "think-python-2e",
+    "page": 32,
+    "position": 1163,
+    "context": "class            finally        is                  return\nNone              continue      for                lambda    "
+  }
+]

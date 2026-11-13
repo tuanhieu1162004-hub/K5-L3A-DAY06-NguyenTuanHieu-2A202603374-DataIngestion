@@ -1,4 +1,4 @@
-strategy,chunking,chunk_size,overlap,metadata,filter,vectorizer,hypothesis,dev_hit1,dev_hit3,test_hit1,test_hit3,notes
-A,,,,,,,,,,,,
-B,,,,,,,,,,,,
-C,,,,,,,,,,,,
+﻿strategy,chunking,chunk_size,overlap,metadata,filter,vectorizer,hypothesis,dev_hit1,dev_hit3,test_hit1,test_hit3,notes
+A,fixed,500,50,document_id/source/page/printed_page/chapter/chapter_title/offsets,none,sentence-transformers/all-MiniLM-L6-v2,Fixed windows may cut evidence,7/15,10/15,2/5,4/5,Protocol frozen 2026-11-13T19:34:57+07:00; exact cosine; local service cost 0 USD
+B,paragraph,500,0,document_id/source/page/printed_page/chapter/chapter_title/offsets,none,sentence-transformers/all-MiniLM-L6-v2,Paragraph units may improve coherence but can fragment long paragraphs,12/15,12/15,3/5,3/5,Protocol frozen 2026-11-13T19:34:57+07:00; exact cosine; local service cost 0 USD
+C,paragraph,500,0,document_id/source/page/printed_page/chapter/chapter_title/offsets,chapter when supplied,sentence-transformers/all-MiniLM-L6-v2,Chapter filtering may reduce off-topic hits; no change for unfiltered questions,12/15,12/15,3/5,3/5,Protocol frozen 2026-11-13T19:34:57+07:00; exact cosine; local service cost 0 USD

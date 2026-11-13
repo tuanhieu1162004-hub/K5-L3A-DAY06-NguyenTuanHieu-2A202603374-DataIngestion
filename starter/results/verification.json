@@ -1,0 +1,41 @@
+{
+  "verified_at": "2026-11-13T22:16:06+07:00",
+  "passed": true,
+  "dev_traces": 45,
+  "test_traces": 15,
+  "top3_records": 180,
+  "metadata_source_checks": 45,
+  "nonfiltered_B_C_controls": 17,
+  "persistent_database_counts": {
+    "A": 241,
+    "B": 271,
+    "C": 271
+  },
+  "stale_removal_counts": [
+    2,
+    1,
+    0
+  ],
+  "exact_search_indexes": [
+    "CREATE UNIQUE INDEX day6_chunks_pkey ON public.day6_chunks USING btree (strategy, chunk_id)"
+  ],
+  "selection_before_test_verified": true,
+  "input_freeze_valid": true,
+  "invalid_filter_rejection_verified": true,
+  "code_snapshot_timing": "Recorded after execution. An isolated reproduction CLI was added after the primary run; frozen model/data/parameters and primary result files remain unchanged.",
+  "code_sha256": {
+    "chunking.py": "2bcf2259f6d47053494c4e07e4f4054c484631e4ad1043ae834238868f741cdb",
+    "embeddings.py": "4f3cfa06691d7587e5ee806f932ed8b9b6d1725fc8d8fa6c54718ee4cc25951f",
+    "evaluation.py": "cb033ad10bdeeb03fae47a9b3d1a08550f521e24d259253c2db2546fda9b63d8",
+    "finalize_reviews.py": "3bd3a5f079e4276b7190f99e2bbae01d0aae8802ae0af2e463a07c65d9000c35",
+    "ingestion.py": "c410399c847279cbd50b882537a0117b5fb2ae050da69fbddbe3da9f241d8902",
+    "models.py": "5380cd16fcd0d4396db5dda3a205c148c148a5fd6e90b90d060dd546e39bb68d",
+    "prepare_corpus.py": "0c0751ae2d35e849bd8b233bc9913219909cad36838072be840680589b36947c",
+    "reporting.py": "51d1e9fad64dda11a53bef2735c99622e22238b882b917322390ae14603128f3",
+    "review_sheet.py": "b0e5f7108ca3e4f36ae4acf67fcfb579f6fcbce8f8047fe61eb65282c8f78d05",
+    "run.py": "470fe52e1441b2d25f3808bf6569724c42917fef07f931f083ee6f8f507c182d",
+    "store.py": "19203d8577ed95d328ab025f03b07ee48e38aca869d4978de8012211c290f85c",
+    "validate_benchmark.py": "941c00c6c326244aa339b24f8bd27b1935f130bc53c96827fbb87b2e101cf3db",
+    "__init__.py": "86b6f304b218783f00e27c050a111049f5dc07fd98194c556deb0633d7c8980a"
+  }
+}

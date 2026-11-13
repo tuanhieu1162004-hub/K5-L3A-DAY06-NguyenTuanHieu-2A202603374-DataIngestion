@@ -7,4 +7,9 @@ __pycache__/
 !.env.example
 .DS_Store
 .pytest_cache/
+.cache/
+.model_cache/
+data/manifest.generated.json
+artifacts/publish_receipt.json
+artifacts/submission_manifest.json
 *.sqlite

@@ -1,0 +1,21 @@
+{
+  "frozen_at": "2026-11-13T19:34:57+07:00",
+  "selection_rule": [
+    "highest dev hit3_n",
+    "highest dev hit1_n",
+    "lowest mean dev search_seconds",
+    "alphabetical strategy ID"
+  ],
+  "model": "sentence-transformers/all-MiniLM-L6-v2",
+  "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "sha256": {
+    "data/manifest.json": "bc47837eff94293cf3dfa66b337c07b5b7af5664f8b7df9634f867a76f87f04b",
+    "benchmark/questions.jsonl": "c7646061abff82283227f7715fdeacf032b06fc0aee8409aee0a2f73b6f2e948",
+    "starter/results/pages.jsonl": "be645f53bf301489b208052905ef3d393d4d18c3c96b967fc43bfee0425dd62f",
+    "starter/data/thinkpython2.pdf": "6033000bac3f9268ad75ee041bf8e5d9a3bc8a33bb156399cbd014918cb59f94",
+    "artifacts/strategies.json": "276f39151949cf94947e4a68739de71a170c3fd70ccdd19dd1c6736f93068e2c",
+    "benchmark/coherence_positions.json": "3e83a5b209352a7435a956512a5dbc6d911ca67568bbf6408ff9cbe6f682ae7f"
+  },
+  "test_retrieval_seen": false,
+  "review_provenance": "See results/input_review/REVIEW.md; AI review is explicitly attributed."
+}

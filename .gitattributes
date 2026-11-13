@@ -1,0 +1,3 @@
+# Frozen inputs and traces use byte-level SHA256. Preserve their line endings
+# across Windows/Linux checkouts instead of silently rewriting committed bytes.
+* -text

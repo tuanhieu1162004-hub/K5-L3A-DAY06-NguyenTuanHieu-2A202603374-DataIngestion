@@ -1,0 +1,18 @@
+{
+  "checked_at": "2026-11-13T20:30:36+07:00",
+  "question_count": 20,
+  "split_counts": {
+    "dev": 15,
+    "test": 5
+  },
+  "filtered_question_count": 3,
+  "test_filtered_question_count": 1,
+  "question_reviews_accepted": 20,
+  "corpus_reviews_accepted": 48,
+  "corpus_ai_reviews_accepted": 23,
+  "structure_and_evidence_checks_passed": true,
+  "ready_for_manual_freeze": true,
+  "benchmark_frozen": true,
+  "errors": [],
+  "limitation": "Whitespace matching verifies quote presence only. Accepted input reviews may include explicitly attributed AI review; these are not human coherence or grounding labels. See results/input_review for review provenance."
+}

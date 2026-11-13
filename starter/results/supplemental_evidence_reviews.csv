@@ -1,0 +1,3 @@
+﻿strategy,question_id,rank,chunk_id,page,reviewer,equivalent_evidence_supported,human_confirmed,reason,timing
+B,q17,1,d1d2237eb8f78970bbd79b6b,64,Codex (AI),True,False,The same source/page explicitly gives the first-true-branch rule and statement termination. The missing introductory gold sentence is unnecessary to answer.,Post-hoc supplementary review only; not used for selection; frozen gold and primary metrics unchanged.
+C,q17,1,d1d2237eb8f78970bbd79b6b,64,Codex (AI),True,False,The same source/page explicitly gives the first-true-branch rule and statement termination. The missing introductory gold sentence is unnecessary to answer.,Post-hoc supplementary review only; not used for selection; frozen gold and primary metrics unchanged.

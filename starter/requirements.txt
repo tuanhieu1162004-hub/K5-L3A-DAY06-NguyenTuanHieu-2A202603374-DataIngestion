@@ -2,3 +2,7 @@
 psycopg[binary]==3.3.8
 pypdf>=5,<7
 python-dotenv>=1,<2
+sentence-transformers==5.1.2
+transformers==4.57.3
+# Install the CPU torch wheel first; see the root README.
+torch==2.9.1

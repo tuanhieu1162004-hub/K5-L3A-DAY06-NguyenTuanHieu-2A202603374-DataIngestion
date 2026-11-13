@@ -1,0 +1,49 @@
+page,prior_status,status,reviewer_this_run,method,notes
+23,accepted,accepted,Codex (AI),Existing accepted status preserved; source text and metadata rechecked programmatically,Earlier accepted page retained; no new visual-content review claimed in this run.
+24,accepted,accepted,Codex (AI),Existing accepted status preserved; source text and metadata rechecked programmatically,Earlier accepted page retained; no new visual-content review claimed in this run.
+25,accepted,accepted,Codex (AI),Existing accepted status preserved; source text and metadata rechecked programmatically,Earlier accepted page retained; no new visual-content review claimed in this run.
+26,accepted,accepted,Codex (AI),Existing accepted status preserved; source text and metadata rechecked programmatically,Earlier accepted page retained; no new visual-content review claimed in this run.
+27,accepted,accepted,Codex (AI),Existing accepted status preserved; source text and metadata rechecked programmatically,Earlier accepted page retained; no new visual-content review claimed in this run.
+28,accepted,accepted,Codex (AI),Existing accepted status preserved; source text and metadata rechecked programmatically,Earlier accepted page retained; no new visual-content review claimed in this run.
+29,accepted,accepted,Codex (AI),Existing accepted status preserved; source text and metadata rechecked programmatically,Earlier accepted page retained; no new visual-content review claimed in this run.
+30,accepted,accepted,Codex (AI),Existing accepted status preserved; source text and metadata rechecked programmatically,Earlier accepted page retained; no new visual-content review claimed in this run.
+31,accepted,accepted,Codex (AI),Existing accepted status preserved; source text and metadata rechecked programmatically,Earlier accepted page retained; no new visual-content review claimed in this run.
+32,accepted,accepted,Codex (AI),Existing accepted status preserved; source text and metadata rechecked programmatically,Earlier accepted page retained; no new visual-content review claimed in this run.
+33,accepted,accepted,Codex (AI),Existing accepted status preserved; source text and metadata rechecked programmatically,Earlier accepted page retained; no new visual-content review claimed in this run.
+34,accepted,accepted,Codex (AI),Existing accepted status preserved; source text and metadata rechecked programmatically,Earlier accepted page retained; no new visual-content review claimed in this run.
+35,accepted,accepted,Codex (AI),Existing accepted status preserved; source text and metadata rechecked programmatically,Earlier accepted page retained; no new visual-content review claimed in this run.
+36,accepted,accepted,Codex (AI),Existing accepted status preserved; source text and metadata rechecked programmatically,Earlier accepted page retained; no new visual-content review claimed in this run.
+37,accepted,accepted,Codex (AI),Existing accepted status preserved; source text and metadata rechecked programmatically,Earlier accepted page retained; no new visual-content review claimed in this run.
+39,accepted,accepted,Codex (AI),Existing accepted status preserved; source text and metadata rechecked programmatically,Earlier accepted page retained; no new visual-content review claimed in this run.
+40,accepted,accepted,Codex (AI),Existing accepted status preserved; source text and metadata rechecked programmatically,Earlier accepted page retained; no new visual-content review claimed in this run.
+41,accepted,accepted,Codex (AI),Existing accepted status preserved; source text and metadata rechecked programmatically,Earlier accepted page retained; no new visual-content review claimed in this run.
+42,accepted,accepted,Codex (AI),Existing accepted status preserved; source text and metadata rechecked programmatically,Earlier accepted page retained; no new visual-content review claimed in this run.
+43,accepted,accepted,Codex (AI),Existing accepted status preserved; source text and metadata rechecked programmatically,Earlier accepted page retained; no new visual-content review claimed in this run.
+44,accepted,accepted,Codex (AI),Existing accepted status preserved; source text and metadata rechecked programmatically,Earlier accepted page retained; no new visual-content review claimed in this run.
+45,accepted,accepted,Codex (AI),Existing accepted status preserved; source text and metadata rechecked programmatically,Earlier accepted page retained; no new visual-content review claimed in this run.
+46,accepted,accepted,Codex (AI),Existing accepted status preserved; source text and metadata rechecked programmatically,Earlier accepted page retained; no new visual-content review claimed in this run.
+47,accepted,accepted,Codex (AI),Existing accepted status preserved; source text and metadata rechecked programmatically,Earlier accepted page retained; no new visual-content review claimed in this run.
+48,accepted,accepted,Codex (AI),Existing accepted status preserved; source text and metadata rechecked programmatically,Earlier accepted page retained; no new visual-content review claimed in this run.
+49,pending,accepted,Codex (AI),PDF visual plus full text review and source checks,"Exercises 3.2-3.3: function objects, repeated calls, and grid printing; substantive text/code."
+50,pending,accepted,Codex (AI),PDF visual plus full text review and source checks,"Continuation of Exercise 3.3: output placement and four-by-four grid task; short but useful, not blank or references-only."
+51,pending,accepted,Codex (AI),PDF visual plus full text review and source checks,"Chapter 4 introduction and turtle module setup, object creation and mainloop example."
+52,pending,accepted,Codex (AI),PDF visual plus full text review and source checks,Turtle movement/pen methods and simple repetition examples; substantive prose/code.
+53,pending,accepted,Codex (AI),PDF visual plus full text review and source checks,For-loop square example and function-design exercises with parameters.
+54,pending,accepted,Codex (AI),PDF visual plus full text review and source checks,"Encapsulation and generalization, with square/polygon function implementations."
+55,pending,accepted,Codex (AI),PDF visual plus full text review and source checks,Keyword arguments and interface design; circle approximation and interface trade-offs.
+56,pending,accepted,Codex (AI),PDF visual plus full text review and source checks,Refactoring arc/polygon into polyline; executable code and explanation.
+57,pending,accepted,Codex (AI),PDF visual plus full text review and source checks,"Refactoring definition, development plan and docstring definition/examples; supports q14/q15."
+58,pending,accepted,Codex (AI),PDF visual plus full text review and source checks,"Docstring continuation, preconditions/postconditions and chapter glossary."
+59,pending,accepted,Codex (AI),PDF visual plus full text review and source checks,Figures plus glossary entries and exercises; useful text remains independently of the figures.
+60,pending,accepted,Codex (AI),PDF visual plus full text review and source checks,"Exercise 4.5 asks for an Archimedean spiral program; short but useful, not just a bibliography."
+61,pending,accepted,Codex (AI),PDF visual plus full text review and source checks,"Chapter 5 introduction, floor division and modulus explanations/examples."
+62,pending,accepted,Codex (AI),PDF visual plus full text review and source checks,"Python 2 division caveat, boolean/relational/logical operators and examples."
+63,pending,accepted,Codex (AI),PDF visual plus full text review and source checks,If/pass/else semantics and conditional execution examples.
+64,pending,accepted,Codex (AI),PDF visual plus full text review and source checks,Chained/nested conditionals; only the first true branch executes; supports q17.
+65,pending,accepted,Codex (AI),PDF visual plus full text review and source checks,Recursive countdown/print_n explanations and code.
+66,pending,accepted,Codex (AI),PDF visual plus full text review and source checks,Base case and recursive stack diagram with substantive explanatory text; infinite-recursion introduction.
+67,pending,accepted,Codex (AI),PDF visual plus full text review and source checks,Infinite recursion diagnosis and input returning a string; supports q18/q19.
+68,pending,accepted,Codex (AI),PDF visual plus full text review and source checks,Conversion error and debugging discussion: reported error location may follow the true cause; supports q20.
+69,pending,accepted,Codex (AI),PDF visual plus full text review and source checks,Chapter glossary explicitly defines floor division as rounding toward negative infinity; supports q16.
+70,pending,accepted,Codex (AI),PDF visual plus full text review and source checks,"Exercises on Fermat, triangle inequalities and recursive tracing; formulas need visual context."
+71,pending,accepted,Codex (AI),PDF visual plus full text review and source checks,"Koch-curve figure plus recursive code and detailed drawing instructions; useful text/code, not image-only."

@@ -1,0 +1,27 @@
+{
+  "reviewed_at": "2026-11-13T22:13:54+07:00",
+  "rows": [
+    {
+      "strategy": "A",
+      "n": 5,
+      "primary_hit3_n": 4,
+      "ai_equivalence_hit3_n": 4
+    },
+    {
+      "strategy": "B",
+      "n": 5,
+      "primary_hit3_n": 3,
+      "ai_equivalence_hit3_n": 4
+    },
+    {
+      "strategy": "C",
+      "n": 5,
+      "primary_hit3_n": 3,
+      "ai_equivalence_hit3_n": 4
+    }
+  ],
+  "reviewer": "Codex (AI)",
+  "used_for_selection": false,
+  "human_confirmed": false,
+  "note": "Supplementary AI adjudication of q17 only. Not a replacement for the original metric or a new test experiment."
+}

@@ -1,0 +1,50 @@
+{
+  "rows": [
+    {
+      "strategy": "A",
+      "split": "test",
+      "n": 5,
+      "hit1_n": 2,
+      "hit3_n": 4,
+      "hit1": 0.4,
+      "hit3": 0.8,
+      "filter_questions": 1,
+      "requested_filter_compliant_n": 1,
+      "mean_search_seconds": 0.01261536000019987
+    },
+    {
+      "strategy": "B",
+      "split": "test",
+      "n": 5,
+      "hit1_n": 3,
+      "hit3_n": 3,
+      "hit1": 0.6,
+      "hit3": 0.6,
+      "filter_questions": 1,
+      "requested_filter_compliant_n": 1,
+      "mean_search_seconds": 0.012020680000205175
+    },
+    {
+      "strategy": "C",
+      "split": "test",
+      "n": 5,
+      "hit1_n": 3,
+      "hit3_n": 3,
+      "hit1": 0.6,
+      "hit3": 0.6,
+      "filter_questions": 1,
+      "requested_filter_compliant_n": 1,
+      "mean_search_seconds": 0.010479119999945396
+    }
+  ],
+  "evaluated_at": "2026-11-13T20:23:16+07:00",
+  "query_embedding": {
+    "seconds": 0.37278210000113177,
+    "inputs": 5,
+    "new_embeddings": 5,
+    "cached_inputs": 0,
+    "total_tokens": 88,
+    "max_tokens": 20
+  },
+  "model_load_seconds": 1.418486099999427
+}

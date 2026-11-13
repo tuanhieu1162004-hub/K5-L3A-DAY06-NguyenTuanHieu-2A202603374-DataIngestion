@@ -1,5 +1,22 @@
 # Day 06 · Data Ingestion Engineering
 
+**Bài làm: Nguyễn Tuấn Hiếu — 2A202603374.** Corpus Think Python 2e,
+chương 1–5. Cách setup, lệnh chạy và giải thích mã nguồn: [RUNBOOK.md](RUNBOOK.md).
+Cấu hình: [artifacts/strategies.json](artifacts/strategies.json).
+Kết quả thực nghiệm: [starter/results/](starter/results/).
+Báo cáo: [report/individual/2A202603374_NguyenTuanHieu.md](report/individual/2A202603374_NguyenTuanHieu.md).
+
+Trên máy Windows hiện tại, từ `starter/`, dùng môi trường đường dẫn ngắn:
+
+```powershell
+..\..\.venv\Scripts\python.exe -m src.validate_benchmark
+..\..\.venv\Scripts\python.exe -m src.run --stage all
+# Chạy lại vào thư mục riêng và giữ kết quả gốc:
+..\..\.venv\Scripts\python.exe -m src.run --stage all --reproduce
+```
+
+Phần dưới là yêu cầu gốc của bài lab.
+
 **Lab cá nhân** · **4 giờ** · **Dữ liệu tự chọn**
 
 Biến tài liệu thành kho tri thức có thể truy xuất cho AI agent, rồi đo xem cách chuẩn bị dữ liệu nào hiệu quả nhất.

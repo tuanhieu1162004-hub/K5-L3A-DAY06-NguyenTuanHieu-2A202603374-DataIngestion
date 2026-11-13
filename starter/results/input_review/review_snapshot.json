@@ -1,0 +1,15 @@
+{
+  "recorded_at": "2026-11-13T19:11:38+07:00",
+  "reviewer": "Codex (AI)",
+  "stage": "input_review_complete",
+  "benchmark_frozen": false,
+  "file_sha256": {
+    "data/manifest.json": "bc47837eff94293cf3dfa66b337c07b5b7af5664f8b7df9634f867a76f87f04b",
+    "benchmark/questions.jsonl": "c7646061abff82283227f7715fdeacf032b06fc0aee8409aee0a2f73b6f2e948",
+    "starter/results/pages.jsonl": "be645f53bf301489b208052905ef3d393d4d18c3c96b967fc43bfee0425dd62f",
+    "starter/results/benchmark_validation.json": "c0ea0ea2cea7849fde07fa58d1202ed2babb4ccd938792ea869053cc63a0aa4b",
+    "starter/results/input_review/source_checks.json": "bd43126befd45c8a8233233977b4e54858ee35beca373dabcf2e3dc13ed4b970",
+    "starter/results/input_review/corpus_review.csv": "40afcbbee4ac87f450e167ee2a5e2c76b301b5d51e4187901c2e81dd1c7cc4ad",
+    "starter/results/input_review/REVIEW.md": "c163039ecacc7e6455ce80637796d5b30604a57b27031e1ff56df76142a653ac"
+  }
+}

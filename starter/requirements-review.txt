@@ -1,0 +1,2 @@
+# Optional source-review/rendering dependency; separate from the ingestion runtime.
+pymupdf==1.26.7

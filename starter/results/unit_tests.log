@@ -1,0 +1,12 @@
+test_invalid_overlap_cannot_hang (test_pipeline.ChunkingTests.test_invalid_overlap_cannot_hang) ... ok
+test_oversized_unbroken_paragraph_and_unicode (test_pipeline.ChunkingTests.test_oversized_unbroken_paragraph_and_unicode) ... ok
+test_real_corpus_coverage_and_source_offsets (test_pipeline.ChunkingTests.test_real_corpus_coverage_and_source_offsets) ... ok
+test_alternative_and_whitespace (test_pipeline.EvidenceTests.test_alternative_and_whitespace) ... ok
+test_frozen_inputs_still_match (test_pipeline.EvidenceTests.test_frozen_inputs_still_match) ... ok
+test_full_evidence_requires_source_page_and_single_chunk (test_pipeline.EvidenceTests.test_full_evidence_requires_source_page_and_single_chunk) ... ok
+test_metrics_keep_split_denominators (test_pipeline.EvidenceTests.test_metrics_keep_split_denominators) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.034s
+
+OK

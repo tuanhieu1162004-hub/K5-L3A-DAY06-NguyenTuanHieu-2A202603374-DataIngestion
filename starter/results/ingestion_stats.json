@@ -1,0 +1,102 @@
+{
+  "started_at": "2026-11-13T20:22:42+07:00",
+  "model": "sentence-transformers/all-MiniLM-L6-v2",
+  "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "dimensions": 384,
+  "model_max_tokens": 256,
+  "model_load_seconds": 15.310960299999351,
+  "device": "cpu",
+  "metric": "cosine",
+  "search": "exact",
+  "service_cost_usd": 0,
+  "strategies": {
+    "A": {
+      "chunk_count": 241,
+      "length_min": 52,
+      "length_max": 500,
+      "length_mean": 452.9460580912863,
+      "length_median": 500,
+      "total_characters": 109160,
+      "embedding": {
+        "seconds": 14.19189180000103,
+        "inputs": 241,
+        "new_embeddings": 241,
+        "cached_inputs": 0,
+        "total_tokens": 24821,
+        "max_tokens": 159
+      },
+      "database_write_seconds": 0.28863170000113314,
+      "ingest_seconds_including_repeat_check": 14.773287799998798,
+      "reingest_counts": [
+        241,
+        241
+      ],
+      "service_cost_usd": 0
+    },
+    "B": {
+      "chunk_count": 271,
+      "length_min": 21,
+      "length_max": 500,
+      "length_mean": 364.95571955719555,
+      "length_median": 404,
+      "total_characters": 98903,
+      "embedding": {
+        "seconds": 13.221268799999962,
+        "inputs": 271,
+        "new_embeddings": 268,
+        "cached_inputs": 3,
+        "total_tokens": 22495,
+        "max_tokens": 152
+      },
+      "database_write_seconds": 0.2660968000000139,
+      "ingest_seconds_including_repeat_check": 13.809691899999962,
+      "reingest_counts": [
+        271,
+        271
+      ],
+      "service_cost_usd": 0
+    },
+    "C": {
+      "chunk_count": 271,
+      "length_min": 21,
+      "length_max": 500,
+      "length_mean": 364.95571955719555,
+      "length_median": 404,
+      "total_characters": 98903,
+      "embedding": {
+        "seconds": 0.06590230000074371,
+        "inputs": 271,
+        "new_embeddings": 0,
+        "cached_inputs": 271,
+        "total_tokens": 22495,
+        "max_tokens": 152
+      },
+      "database_write_seconds": 0.27170059999843943,
+      "ingest_seconds_including_repeat_check": 0.628513199999361,
+      "reingest_counts": [
+        271,
+        271
+      ],
+      "service_cost_usd": 0
+    }
+  },
+  "versions": {
+    "postgres": "16.16 (Debian 16.16-1.pgdg12+1)",
+    "pgvector": "0.8.7"
+  },
+  "stale_removal_check_counts": [
+    2,
+    1,
+    0
+  ],
+  "finished_at": "2026-11-13T20:23:11+07:00",
+  "python": "3.13.14",
+  "libraries": {
+    "sentence-transformers": "5.1.2",
+    "transformers": "4.57.3",
+    "torch": "2.9.1+cpu",
+    "psycopg": "3.3.8",
+    "pypdf": "6.21.4",
+    "numpy": "2.5.4"
+  }
+}

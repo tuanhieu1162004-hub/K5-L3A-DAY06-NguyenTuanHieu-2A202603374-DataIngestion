@@ -1,0 +1,16 @@
+{
+  "completed_at": "2026-11-13T22:11:17+07:00",
+  "comparisons": [
+    {
+      "split": "dev",
+      "metric_counts_match": true
+    },
+    {
+      "split": "test",
+      "metric_counts_match": true
+    }
+  ],
+  "primary_results_preserved": true,
+  "selection_matches_original": true,
+  "note": "Timing tie-break may select a different B/C winner on replay; the original selection and metrics remain unchanged."
+}

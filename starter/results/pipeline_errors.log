@@ -1,0 +1,114 @@
+2026-11-13 20:11:36,806 ERROR Could not cache non-existence of file. Will ignore error and continue. Error: [Errno 2] No such file or directory: 'C:\\Users\\Admin\\Downloads\\K5-L3-Day06-DataIngestionEngineering-main\\K5-L3-Day06-DataIngestionEngineering-main\\starter\\.cache\\embedding\\models\\models--sentence-transformers--all-MiniLM-L6-v2\\.no_exist\\1110a243fdf4706b3f48f1d95db1a4f5529b4d41\\sentence_roberta_config.json'
+2026-11-13 20:11:37,086 ERROR Could not cache non-existence of file. Will ignore error and continue. Error: [Errno 2] No such file or directory: 'C:\\Users\\Admin\\Downloads\\K5-L3-Day06-DataIngestionEngineering-main\\K5-L3-Day06-DataIngestionEngineering-main\\starter\\.cache\\embedding\\models\\models--sentence-transformers--all-MiniLM-L6-v2\\.no_exist\\1110a243fdf4706b3f48f1d95db1a4f5529b4d41\\sentence_distilbert_config.json'
+2026-11-13 20:11:37,343 ERROR Could not cache non-existence of file. Will ignore error and continue. Error: [Errno 2] No such file or directory: 'C:\\Users\\Admin\\Downloads\\K5-L3-Day06-DataIngestionEngineering-main\\K5-L3-Day06-DataIngestionEngineering-main\\starter\\.cache\\embedding\\models\\models--sentence-transformers--all-MiniLM-L6-v2\\.no_exist\\1110a243fdf4706b3f48f1d95db1a4f5529b4d41\\sentence_camembert_config.json'
+2026-11-13 20:11:37,633 ERROR Could not cache non-existence of file. Will ignore error and continue. Error: [Errno 2] No such file or directory: 'C:\\Users\\Admin\\Downloads\\K5-L3-Day06-DataIngestionEngineering-main\\K5-L3-Day06-DataIngestionEngineering-main\\starter\\.cache\\embedding\\models\\models--sentence-transformers--all-MiniLM-L6-v2\\.no_exist\\1110a243fdf4706b3f48f1d95db1a4f5529b4d41\\sentence_albert_config.json'
+2026-11-13 20:11:37,888 ERROR Could not cache non-existence of file. Will ignore error and continue. Error: [Errno 2] No such file or directory: 'C:\\Users\\Admin\\Downloads\\K5-L3-Day06-DataIngestionEngineering-main\\K5-L3-Day06-DataIngestionEngineering-main\\starter\\.cache\\embedding\\models\\models--sentence-transformers--all-MiniLM-L6-v2\\.no_exist\\1110a243fdf4706b3f48f1d95db1a4f5529b4d41\\sentence_xlm-roberta_config.json'
+2026-11-13 20:11:38,166 ERROR Could not cache non-existence of file. Will ignore error and continue. Error: [Errno 2] No such file or directory: 'C:\\Users\\Admin\\Downloads\\K5-L3-Day06-DataIngestionEngineering-main\\K5-L3-Day06-DataIngestionEngineering-main\\starter\\.cache\\embedding\\models\\models--sentence-transformers--all-MiniLM-L6-v2\\.no_exist\\1110a243fdf4706b3f48f1d95db1a4f5529b4d41\\sentence_xlnet_config.json'
+2026-11-13 20:11:44,158 ERROR Pipeline stage failed: all
+Traceback (most recent call last):
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\shutil.py", line 860, in move
+    os.rename(src, real_dst)
+    ~~~~~~~~~^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\Admin\\Downloads\\K5-L3-Day06-DataIngestionEngineering-main\\K5-L3-Day06-DataIngestionEngineering-main\\starter\\.cache\\embedding\\models\\models--sentence-transformers--all-MiniLM-L6-v2\\blobs\\c79f2b6a0cea6f4b564fed1938984bace9d30ff0' -> 'C:\\Users\\Admin\\Downloads\\K5-L3-Day06-DataIngestionEngineering-main\\K5-L3-Day06-DataIngestionEngineering-main\\starter\\.cache\\embedding\\models\\models--sentence-transformers--all-MiniLM-L6-v2\\snapshots\\1110a243fdf4706b3f48f1d95db1a4f5529b4d41\\tokenizer_config.json'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\Downloads\K5-L3-Day06-DataIngestionEngineering-main\.venv\Lib\site-packages\huggingface_hub\file_download.py", line 1804, in _copy_no_matter_what
+    shutil.copy2(src, dst)
+    ~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\shutil.py", line 453, in copy2
+    _winapi.CopyFile2(src_, dst_, flags)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] The system cannot find the path specified
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\Downloads\K5-L3-Day06-DataIngestionEngineering-main\K5-L3-Day06-DataIngestionEngineering-main\starter\src\run.py", line 304, in main
+    action()
+    ~~~~~~^^
+  File "C:\Users\Admin\Downloads\K5-L3-Day06-DataIngestionEngineering-main\K5-L3-Day06-DataIngestionEngineering-main\starter\src\run.py", line 132, in ingest
+    model = embedder(config)
+  File "C:\Users\Admin\Downloads\K5-L3-Day06-DataIngestionEngineering-main\K5-L3-Day06-DataIngestionEngineering-main\starter\src\run.py", line 116, in embedder
+    return MyEmbedder(config["model"], revision=config["model_revision"], cache_dir=STARTER / ".cache/embedding")
+  File "C:\Users\Admin\Downloads\K5-L3-Day06-DataIngestionEngineering-main\K5-L3-Day06-DataIngestionEngineering-main\starter\src\embeddings.py", line 35, in __init__
+    self.model = SentenceTransformer(model_name, revision=revision, device="cpu",
+                 ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        cache_folder=str(cache_dir / "models"), trust_remote_code=False)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Downloads\K5-L3-Day06-DataIngestionEngineering-main\.venv\Lib\site-packages\sentence_transformers\SentenceTransformer.py", line 327, in __init__
+    modules, self.module_kwargs = self._load_sbert_model(
+                                  ~~~~~~~~~~~~~~~~~~~~~~^
+        model_name_or_path,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+        config_kwargs=config_kwargs,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Admin\Downloads\K5-L3-Day06-DataIngestionEngineering-main\.venv\Lib\site-packages\sentence_transformers\SentenceTransformer.py", line 2305, in _load_sbert_model
+    module = module_class.load(
+        model_name_or_path,
+    ...<11 lines>...
+        backend=self.backend,
+    )
+  File "C:\Users\Admin\Downloads\K5-L3-Day06-DataIngestionEngineering-main\.venv\Lib\site-packages\sentence_transformers\models\Transformer.py", line 365, in load
+    return cls(model_name_or_path=model_name_or_path, **init_kwargs)
+  File "C:\Users\Admin\Downloads\K5-L3-Day06-DataIngestionEngineering-main\.venv\Lib\site-packages\sentence_transformers\models\Transformer.py", line 102, in __init__
+    self.tokenizer = AutoTokenizer.from_pretrained(
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        tokenizer_name_or_path if tokenizer_name_or_path is not None else model_name_or_path,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        cache_dir=cache_dir,
+        ^^^^^^^^^^^^^^^^^^^^
+        **tokenizer_args,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Admin\Downloads\K5-L3-Day06-DataIngestionEngineering-main\.venv\Lib\site-packages\transformers\models\auto\tokenization_auto.py", line 1089, in from_pretrained
+    tokenizer_config = get_tokenizer_config(pretrained_model_name_or_path, **kwargs)
+  File "C:\Users\Admin\Downloads\K5-L3-Day06-DataIngestionEngineering-main\.venv\Lib\site-packages\transformers\models\auto\tokenization_auto.py", line 921, in get_tokenizer_config
+    resolved_config_file = cached_file(
+        pretrained_model_name_or_path,
+    ...<12 lines>...
+        _commit_hash=commit_hash,
+    )
+  File "C:\Users\Admin\Downloads\K5-L3-Day06-DataIngestionEngineering-main\.venv\Lib\site-packages\transformers\utils\hub.py", line 322, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+  File "C:\Users\Admin\Downloads\K5-L3-Day06-DataIngestionEngineering-main\.venv\Lib\site-packages\transformers\utils\hub.py", line 567, in cached_files
+    raise e
+  File "C:\Users\Admin\Downloads\K5-L3-Day06-DataIngestionEngineering-main\.venv\Lib\site-packages\transformers\utils\hub.py", line 479, in cached_files
+    hf_hub_download(
+    ~~~~~~~~~~~~~~~^
+        path_or_repo_id,
+        ^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        local_files_only=local_files_only,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Admin\Downloads\K5-L3-Day06-DataIngestionEngineering-main\.venv\Lib\site-packages\huggingface_hub\utils\_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "C:\Users\Admin\Downloads\K5-L3-Day06-DataIngestionEngineering-main\.venv\Lib\site-packages\huggingface_hub\file_download.py", line 1014, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+        # Destination
+    ...<14 lines>...
+        force_download=force_download,
+    )
+  File "C:\Users\Admin\Downloads\K5-L3-Day06-DataIngestionEngineering-main\.venv\Lib\site-packages\huggingface_hub\file_download.py", line 1188, in _hf_hub_download_to_cache_dir
+    _create_symlink(blob_path, pointer_path, new_blob=True)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Downloads\K5-L3-Day06-DataIngestionEngineering-main\.venv\Lib\site-packages\huggingface_hub\file_download.py", line 757, in _create_symlink
+    shutil.move(abs_src, abs_dst, copy_function=_copy_no_matter_what)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\shutil.py", line 880, in move
+    copy_function(src, real_dst)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Downloads\K5-L3-Day06-DataIngestionEngineering-main\.venv\Lib\site-packages\huggingface_hub\file_download.py", line 1807, in _copy_no_matter_what
+    shutil.copyfile(src, dst)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\shutil.py", line 262, in copyfile
+    with open(dst, 'wb') as fdst:
+         ~~~~^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Admin\\Downloads\\K5-L3-Day06-DataIngestionEngineering-main\\K5-L3-Day06-DataIngestionEngineering-main\\starter\\.cache\\embedding\\models\\models--sentence-transformers--all-MiniLM-L6-v2\\snapshots\\1110a243fdf4706b3f48f1d95db1a4f5529b4d41\\tokenizer_config.json'

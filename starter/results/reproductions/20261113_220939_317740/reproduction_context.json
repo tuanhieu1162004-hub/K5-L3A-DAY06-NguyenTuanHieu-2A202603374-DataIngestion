@@ -1,0 +1,14 @@
+{
+  "started_at": "2026-11-13T22:09:39+07:00",
+  "purpose": "known-test reproduction, not a fresh independent holdout",
+  "frozen_sha256": "110f9121718af344ddb30e3f8abe1a50cff98d9c4805459d6c5280660dd3277f",
+  "original_result_sha256": {
+    "traces_dev.jsonl": "55944af103b7fc49a3b2d0f7842c9edf4fe13a8d92a713d7b8952424b7571a7b",
+    "traces_test.jsonl": "3852ce86122abb7579328fcaab00124b7b573dae8dad9e461dd28e9007fc5953",
+    "selection.json": "ac6bf3c95dc580609e870f365d926ea247092dde2662ac74f79ec7b4bf16810f",
+    "metrics_dev.json": "756cf66c81d5c4e6c273b10df15dd4e9e039242e5065653de87f7c8c7cdadf60",
+    "metrics_test.json": "2df92ec1d80811566fd2be891589dee5e4eb9082757d8583208c137095f5f3dd"
+  },
+  "cache_note": "Uses revision-keyed existing model/vector cache; encoding can be warm.",
+  "output_directory": "starter/results/reproductions/20261113_220939_317740"
+}

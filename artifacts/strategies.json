@@ -1,0 +1,40 @@
+{
+  "model": "sentence-transformers/all-MiniLM-L6-v2",
+  "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "model_choice_note": "Chosen before retrieval because corpus and questions are English. Replaces the earlier suggested multilingual-e5-small; not chosen using results.",
+  "device": "cpu",
+  "seed": 42,
+  "normalize_embeddings": true,
+  "query_prefix": "",
+  "document_prefix": "",
+  "metric": "cosine",
+  "search": "exact pgvector; no ANN index",
+  "top_k": 3,
+  "strategies": {
+    "A": {
+      "chunking": "fixed",
+      "size": 500,
+      "overlap": 50,
+      "filter": false
+    },
+    "B": {
+      "chunking": "paragraph",
+      "size": 500,
+      "overlap": 0,
+      "filter": false
+    },
+    "C": {
+      "chunking": "paragraph",
+      "size": 500,
+      "overlap": 0,
+      "filter": true
+    }
+  },
+  "selection_rule": [
+    "highest dev hit3_n",
+    "highest dev hit1_n",
+    "lowest mean dev search_seconds",
+    "alphabetical strategy ID"
+  ],
+  "coherence_sampling": "First 10 sorted pages, midpoint non-whitespace character; covering chunk with greatest start_char, then chunk_id. Same anchors for A/B/C."
+}

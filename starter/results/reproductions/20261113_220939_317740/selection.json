@@ -1,0 +1,53 @@
+{
+  "selected_at": "2026-11-13T22:11:16+07:00",
+  "strategy": "C",
+  "rule": [
+    "highest dev hit3_n",
+    "highest dev hit1_n",
+    "lowest mean dev search_seconds",
+    "alphabetical strategy ID"
+  ],
+  "dev_results": [
+    {
+      "strategy": "C",
+      "split": "dev",
+      "n": 15,
+      "hit1_n": 12,
+      "hit3_n": 12,
+      "hit1": 0.8,
+      "hit3": 0.8,
+      "filter_questions": 2,
+      "requested_filter_compliant_n": 2,
+      "mean_search_seconds": 0.006260713333904278
+    },
+    {
+      "strategy": "B",
+      "split": "dev",
+      "n": 15,
+      "hit1_n": 12,
+      "hit3_n": 12,
+      "hit1": 0.8,
+      "hit3": 0.8,
+      "filter_questions": 2,
+      "requested_filter_compliant_n": 1,
+      "mean_search_seconds": 0.006365386666827059
+    },
+    {
+      "strategy": "A",
+      "split": "dev",
+      "n": 15,
+      "hit1_n": 7,
+      "hit3_n": 10,
+      "hit1": 0.4666666666666667,
+      "hit3": 0.6666666666666666,
+      "filter_questions": 2,
+      "requested_filter_compliant_n": 1,
+      "mean_search_seconds": 0.00717145999976007
+    }
+  ],
+  "dev_trace_sha256": "c4b02883f7181de34acc5592ff061e8ce0e70037b8a8c307df6bbcef5bc95a9c",
+  "frozen_sha256": "110f9121718af344ddb30e3f8abe1a50cff98d9c4805459d6c5280660dd3277f",
+  "test_retrieval_seen": false,
+  "previous_test_results_known": true,
+  "purpose": "reproduction of an existing benchmark, not a new holdout"
+}

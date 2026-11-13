@@ -1,6 +1,6 @@
 # Starter · PostgreSQL + pgvector
 
-Bộ khởi động **tùy chọn** cho lab cá nhân. Docker Compose tạo PostgreSQL + pgvector local; các file trong `src/` là **khung pseudocode có TODO**, chưa đọc tài liệu, tạo embedding, lưu vector hay chạy benchmark. Bạn cần tự hiện thực. Vẫn có thể chọn Qdrant, Chroma hoặc vector store tương đương theo [GUIDE.md](../GUIDE.md).
+Bản bài làm hiện tại đã hoàn thiện pipeline Think Python với PostgreSQL + pgvector và MiniLM local. Xem [RUNBOOK.md](../RUNBOOK.md) để dùng môi trường đường dẫn ngắn trên Windows, chạy các stage và đọc kết quả. Phần setup bên dưới được giữ từ starter gốc; các ghi chú TODO mô tả trạng thái khung ban đầu, không phải trạng thái code đã triển khai.
 
 ## Cấu trúc
 

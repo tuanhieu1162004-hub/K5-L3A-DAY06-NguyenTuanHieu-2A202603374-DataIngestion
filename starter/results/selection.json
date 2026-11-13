@@ -1,0 +1,51 @@
+{
+  "selected_at": "2026-11-13T20:23:14+07:00",
+  "strategy": "C",
+  "rule": [
+    "highest dev hit3_n",
+    "highest dev hit1_n",
+    "lowest mean dev search_seconds",
+    "alphabetical strategy ID"
+  ],
+  "dev_results": [
+    {
+      "strategy": "C",
+      "split": "dev",
+      "n": 15,
+      "hit1_n": 12,
+      "hit3_n": 12,
+      "hit1": 0.8,
+      "hit3": 0.8,
+      "filter_questions": 2,
+      "requested_filter_compliant_n": 2,
+      "mean_search_seconds": 0.010584806666520308
+    },
+    {
+      "strategy": "B",
+      "split": "dev",
+      "n": 15,
+      "hit1_n": 12,
+      "hit3_n": 12,
+      "hit1": 0.8,
+      "hit3": 0.8,
+      "filter_questions": 2,
+      "requested_filter_compliant_n": 1,
+      "mean_search_seconds": 0.010648166666457352
+    },
+    {
+      "strategy": "A",
+      "split": "dev",
+      "n": 15,
+      "hit1_n": 7,
+      "hit3_n": 10,
+      "hit1": 0.4666666666666667,
+      "hit3": 0.6666666666666666,
+      "filter_questions": 2,
+      "requested_filter_compliant_n": 1,
+      "mean_search_seconds": 0.011979260000104356
+    }
+  ],
+  "dev_trace_sha256": "55944af103b7fc49a3b2d0f7842c9edf4fe13a8d92a713d7b8952424b7571a7b",
+  "frozen_sha256": "110f9121718af344ddb30e3f8abe1a50cff98d9c4805459d6c5280660dd3277f",
+  "test_retrieval_seen": false
+}
